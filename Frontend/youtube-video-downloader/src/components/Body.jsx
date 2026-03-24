@@ -27,6 +27,24 @@ function Body() {
     }
   };
 
+  const handleDownload = async () => {
+  try {
+    const response = await fetch("http://127.0.0.1:8000/download", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: videoUrl }),
+    });
+
+    const blob = await response.blob();
+
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = preview.title + ".mp4"; // filename
+    link.click();
+  } catch (error) {
+    console.error("Download failed:", error);
+  }
+};
 
 
 
@@ -44,7 +62,7 @@ function Body() {
 
                 <input type="text" placeholder="Enter YouTube video URL..." className="border-2 border-red-300 rounded-md p-2 w-full h-12 focus:outline-red-400" value={videoUrl} onChange={handleInputChange}/>
 
-                <button type="submit" onClick={handleSubmit} className="bg-red-500 text-white rounded-md px-4 ml-2 py-1 hover:bg-red-600 h-12">Download</button>
+                <button type="submit" onClick={handleSubmit} className="bg-red-500 text-white rounded-md px-4 ml-2 py-1 hover:bg-red-600 h-12">Preview</button>
             </form>
 
         </div>
@@ -59,6 +77,8 @@ function Body() {
               className="w-75 h-auto"
             />
           </div>
+        
+            <button onClick={handleDownload} className="bg-red-500 text-white rounded-md px-4 ml-2 py-1 hover:bg-red-600 h-12">Download Video</button>
         </div>
       )}
 
