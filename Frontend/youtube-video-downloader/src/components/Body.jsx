@@ -55,53 +55,82 @@ function Body() {
 
 
   return (
-    <main className="pt-18 pb-8 mx-4 h-screen">
+    <main className="pt-16 pb-8 px-4 min-h-screen">
 
-        <div className="flex items-center flex-col ">
-            <h1 className="text-6xl tracking-wide font-bold text-red-600 mb-1">Download any</h1>
-            <h1 className="text-6xl tracking-wide font-bold text-red-600 mb-1">YouTube video</h1>
-            <h1 className="text-6xl tracking-wide font-bold text-red-600 mb-1">in seconds.</h1>
-            <div className="flex gap-x-1">
-            <p className="text-lg pt-2 text-red-600 italic">High Quality Downloads.</p>
-            <p className="text-lg pt-2 text-red-600 italic">Always free.</p>
-            <p className="text-lg pt-2 text-red-600 italic">No watermarks</p>
-            </div>
-        </div>
+  {/* HERO TEXT */}
+  <div className="flex items-center flex-col text-center">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-600">
+      Download any
+    </h1>
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-600">
+      YouTube video
+    </h1>
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-red-600">
+      in seconds.
+    </h1>
 
-        <div className="flex items-center justify-center mt-14 mb-10">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-3 mt-2">
+      <p className="text-sm sm:text-base text-red-600 italic">High Quality Downloads.</p>
+      <p className="text-sm sm:text-base text-red-600 italic">Always free.</p>
+      <p className="text-sm sm:text-base text-red-600 italic">No watermarks</p>
+    </div>
+  </div>
 
-            <form action="" method="POST" className="flex items-center w-full max-w-lg">
+  {/* FORM */}
+  <div className="flex justify-center mt-10 mb-10">
+    <form className="flex flex-col sm:flex-row w-full max-w-lg gap-2 sm:gap-0">
 
-                <input type="text" placeholder="Paste YouTube video URL here..." className="border-2 border-red-300 rounded-lg p-2 w-full h-13 focus:outline-red-400 px-3 py-5" value={videoUrl} onChange={handleInputChange}/>
+      <input
+        type="text"
+        placeholder="Paste YouTube video URL here..."
+        className="border-2 border-red-300 rounded-lg px-3 py-3 w-full focus:outline-red-400 mr-2"
+        value={videoUrl}
+        onChange={handleInputChange}
+      />
 
-                <button type="submit" onClick={handleSubmit} className="bg-red-500 text-white rounded-md gap-x-2 pr-8 ml-2 py-1 hover:bg-red-600 h-12 flex items-center hover:scale-103"><img src={load} alt="" className="pl-2" />Preview</button>
-            </form>
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        className="bg-red-500 text-white rounded-md flex items-center justify-center gap-2 px-5 py-3 hover:bg-red-600 w-full sm:w-auto"
+      >
+        <img src={load} alt="" />
+        Preview
+      </button>
+    </form>
+  </div>
 
-        </div>
+  {/* LOADING */}
+  {loading && (
+    <div className="flex justify-center mt-6">
+      <div className="loader"></div>
+    </div>
+  )}
 
-        {loading && (
-          <div className="mt-6">
-          <div className="loader"></div>
-          </div>
-        )}
+  {/* PREVIEW */}
+  {preview && !loading && (
+    <div className="flex flex-col items-center mt-10 gap-4 mb-20 px-2">
 
-        {preview && !loading && (
-        <div className="flex flex-col items-center mt-14 gap-y-4 mb-45">
-          <p className="mt-2 font-bold text-center pb-1 text-xl text-red-700 ">{preview.title}</p>
-          <div>
-            <img
-              src={preview.thumbnail}
-              alt="Video thumbnail"
-              className="w-lg h-auto"
-            />
-          </div>
-        
-            <button onClick={handleDownload} className="flex justify-center items-center gap-x-3 bg-red-500 text-white rounded-md px-4 ml-2 py-1 w-lg mb-5 hover:bg-red-600 h-12"> <img src={download} alt="" />Download Video</button>
-        </div>
-      )}
+      <p className="font-bold text-center text-base sm:text-lg md:text-xl text-red-700">
+        {preview.title}
+      </p>
 
-        {/* <Footer /> */}
-    </main>
+      <img
+        src={preview.thumbnail}
+        alt="Video thumbnail"
+        className="w-full max-w-md rounded-lg shadow-md"
+      />
+
+      <button
+        onClick={handleDownload}
+        className="flex items-center justify-center gap-3 bg-red-500 text-white rounded-md px-4 py-3 w-full max-w-md hover:bg-red-600"
+      >
+        <img src={download} alt="" />
+        Download Video
+      </button>
+    </div>
+  )}
+
+</main>
   );
 }
 
