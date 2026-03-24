@@ -4,17 +4,28 @@ import { useState } from "react";
 
 function Body() {
   const [videoUrl, setVideoUrl] = useState("");
+  const [preview, setPreview] = useState(null);
 
   function handleInputChange(e){
     setVideoUrl(e.target.value);
   }
 
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault();
 
-    try {}
-    
-  }
+    try {
+      const response = await fetch("http://127.0.0.1:8000/preview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: videoUrl }),
+      });
+
+      const data = await response.json();
+      setPreview(data); 
+    } catch (error) {
+      console.error("Error fetching preview:", error);
+    }
+  };
 
 
 
@@ -38,16 +49,20 @@ function Body() {
 
         </div>
 
-        <div>
-
-            <div>
-
-            </div>
-            
-            <div></div>
+        {preview && (
+        <div className="flex flex-col items-center mt-6 gap-y-4 mb-45">
+          <p className="mt-2 font-semibold text-center pb-1 text-lg">{preview.title}</p>
+          <div>
+            <img
+              src={preview.thumbnail}
+              alt="Video thumbnail"
+              className="w-75 h-auto"
+            />
+          </div>
         </div>
+      )}
 
-        <Footer />
+        {/* <Footer /> */}
     </main>
   );
 }
