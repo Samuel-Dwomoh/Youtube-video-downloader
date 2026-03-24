@@ -110,7 +110,7 @@ function Body() {
   {preview && !loading && (
     <div className="flex flex-col items-center mt-10 gap-4 mb-20 px-2">
 
-      <p className="font-bold text-center text-base sm:text-lg md:text-xl text-red-700">
+      <p className="font-bold text-center text-base sm:text-lg md:text-xl text-red-600">
         {preview.title}
       </p>
 
