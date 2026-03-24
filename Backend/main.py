@@ -29,6 +29,7 @@ def delete_file_later(path, delay=60):
     threading.Thread(target=delete).start()
 
 def get_video_info(url: str):
+    
     try:
         with YoutubeDL() as ydl:
             info = ydl.extract_info(url, download=False)
