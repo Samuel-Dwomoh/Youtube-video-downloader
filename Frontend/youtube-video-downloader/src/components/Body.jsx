@@ -67,9 +67,9 @@ function Body() {
 
             <form action="" method="POST" className="flex items-center w-full max-w-lg">
 
-                <input type="text" placeholder="Enter YouTube video URL..." className="border-2 border-red-300 rounded-md p-2 w-full h-12 focus:outline-red-400 px-3 py-5" value={videoUrl} onChange={handleInputChange}/>
+                <input type="text" placeholder="Paste YouTube video URL here..." className="border-2 border-red-300 rounded-md p-2 w-full h-12 focus:outline-red-400 px-3 py-5" value={videoUrl} onChange={handleInputChange}/>
 
-                <button type="submit" onClick={handleSubmit} className="bg-red-500 text-white rounded-md gap-x-2 pr-8 ml-2 py-1 hover:bg-red-600 h-12 flex items-center"><img src={load} alt="" className="pl-2" />Preview</button>
+                <button type="submit" onClick={handleSubmit} className="bg-red-500 text-white rounded-md gap-x-2 pr-8 ml-2 py-1 hover:bg-red-600 h-12 flex items-center hover:scale-103"><img src={load} alt="" className="pl-2" />Preview</button>
             </form>
 
         </div>

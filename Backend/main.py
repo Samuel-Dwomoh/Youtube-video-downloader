@@ -63,8 +63,9 @@ def download_video(request: VideoRequest):
     url = request.url
     
     ydl_opts = {
-        "format": "best",
+        "format": "bestvideo[height<=1080]+bestaudio/best[height<=720]",
         "outtmpl": "temp/%(title)s.%(ext)s",
+        "merge_output_format": "mp4"
     }
     
     try:
