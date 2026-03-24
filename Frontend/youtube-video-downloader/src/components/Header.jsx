@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="p-4 text-white font-semibold bg-red-500">
+    <header className="p-4 text-white font-semibold">
 
       <div className="flex justify-between mx-4">
 

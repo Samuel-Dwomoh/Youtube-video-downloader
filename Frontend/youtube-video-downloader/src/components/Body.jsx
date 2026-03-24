@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "./Footer";
+import load from "/public/load.svg";
 import { useState } from "react";
 
 function Body() {
@@ -39,7 +40,7 @@ function Body() {
 
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.download = preview.title + ".mp4"; // filename
+    link.download = preview.title + ".mp4";
     link.click();
   } catch (error) {
     console.error("Download failed:", error);
@@ -49,20 +50,26 @@ function Body() {
 
 
   return (
-    <main className="bg-red-50 pt-18 pb-8 mx-4">
+    <main className="pt-18 pb-8 mx-4 h-screen">
 
-        <div className="flex items-center flex-col">
-            <h1 className="text-2xl font-semibold text-red-600 mb-1">Download Any YouTube Video For Free In Just A Few Clicks!</h1>
-            <p className="text-xl pt-2 text-red-500 italic">Free High Quality Downloads</p>
+        <div className="flex items-center flex-col ">
+            <h1 className="text-6xl tracking-wide font-bold text-red-600 mb-1">Download any</h1>
+            <h1 className="text-6xl tracking-wide font-bold text-red-600 mb-1">YouTube video</h1>
+            <h1 className="text-6xl tracking-wide font-bold text-red-600 mb-1">in seconds.</h1>
+            <div className="flex gap-x-1">
+            <p className="text-lg pt-2 text-red-600 italic">High Quality Downloads.</p>
+            <p className="text-lg pt-2 text-red-600 italic">Always free.</p>
+            <p className="text-lg pt-2 text-red-600 italic">No watermarks</p>
+            </div>
         </div>
 
-        <div className="flex items-center justify-center mt-18 mb-10">
+        <div className="flex items-center justify-center mt-14 mb-10">
 
             <form action="" method="POST" className="flex items-center w-full max-w-lg">
 
-                <input type="text" placeholder="Enter YouTube video URL..." className="border-2 border-red-300 rounded-md p-2 w-full h-12 focus:outline-red-400" value={videoUrl} onChange={handleInputChange}/>
+                <input type="text" placeholder="Enter YouTube video URL..." className="border-2 border-red-300 rounded-md p-2 w-full h-12 focus:outline-red-400 px-3 py-5" value={videoUrl} onChange={handleInputChange}/>
 
-                <button type="submit" onClick={handleSubmit} className="bg-red-500 text-white rounded-md px-4 ml-2 py-1 hover:bg-red-600 h-12">Preview</button>
+                <button type="submit" onClick={handleSubmit} className="bg-red-500 text-white rounded-md gap-x-2 pr-8 ml-2 py-1 hover:bg-red-600 h-12 flex items-center"><img src={load} alt="" className="pl-2" />Preview</button>
             </form>
 
         </div>
