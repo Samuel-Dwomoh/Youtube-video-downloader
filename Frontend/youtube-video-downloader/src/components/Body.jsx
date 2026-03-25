@@ -18,7 +18,7 @@ function Body() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://youtube-video-downloader-u656.onrender.com/preview", {
+      const response = await fetch("https://youtube-video-downloader-production-2e39.up.railway.app/preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: videoUrl }),
@@ -35,7 +35,7 @@ function Body() {
 
   const handleDownload = async () => {
   try {
-    const response = await fetch("https://youtube-video-downloader-u656.onrender.com/download", {
+    const response = await fetch("https://youtube-video-downloader-production-2e39.up.railway.app/download", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: videoUrl }),
