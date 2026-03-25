@@ -75,7 +75,13 @@ def download_video(request: VideoRequest):
     ydl_opts = {
         "format": "bestvideo[height<=720]+bestaudio/best",
         "outtmpl": "temp/%(title)s.%(ext)s",
-        "merge_output_format": "mp4"
+        "merge_output_format": "mp4",
+        "quiet": True,
+        "extractor_args": {
+            "youtube": {
+                "player_client": ["android", "web", "tv"]
+            }
+        }
     }
     
     try:
