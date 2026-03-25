@@ -41,6 +41,7 @@ def get_video_info(url: str):
     except Exception:
         return None
 
+
 @app.post("/preview")
 def preview_video(request: VideoRequest):
     info = get_video_info(request.url)
