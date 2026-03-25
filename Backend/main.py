@@ -30,6 +30,15 @@ def delete_file_later(path, delay=60):
 
 def get_video_info(url: str):
     
+    ydl_opts = {
+        "quiet": True,
+        "extractor_args": {
+            "youtube": {
+                "player_client": ["android", "web", "tv"]
+            }
+        }
+    }
+    
     try:
         with YoutubeDL() as ydl:
             info = ydl.extract_info(url, download=False)
